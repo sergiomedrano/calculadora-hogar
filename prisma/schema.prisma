@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AppState {
+  id            Int      @id @default(1)
+  currency      String   @default("CLP")
+  dailyBudget   Float    @default(0)
+  incomeSources Json     @default("[]")
+  expenses      Json     @default("[]")
+  bankAccounts  Json     @default("[]")
+  updatedAt     DateTime @updatedAt
+}
